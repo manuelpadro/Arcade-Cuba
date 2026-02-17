@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>Arcade Cuba - Sala de Juegos</title>
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800;900&family=Orbitron:wght@400;600;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Estilos -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- ===== HEADER ===== -->
+    <header class="header" id="header">
+        <div class="container header-container">
+            <div class="logo">
+                <a href="#inicio">
+                    ARCADE<span>CUBA</span>
+                </a>
+                <div class="logo-glow"></div>
+            </div>
+            
+            <nav class="nav-menu" id="navMenu">
+                <a href="#inicio" class="nav-link active">INICIO</a>
+                <a href="#catalogo" class="nav-link">CATÁLOGO</a>
+                <a href="#gastronomia" class="nav-link">COMIDA</a>
+                <a href="#ofertas" class="nav-link">OFERTAS</a>
+                <a href="#vip" class="nav-link">VIP</a>
+            </nav>
+            
+            <div class="header-buttons">
+                <a href="#vip" class="btn-outline">REGISTRARSE</a>
+                <a href="#reservar" class="btn-primary">RESERVAR</a>
+            </div>
+            
+            <div class="menu-toggle" id="menuToggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- ===== HERO SECTION ===== -->
+    <section class="hero" id="inicio">
+        <div class="container hero-container">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <i class="fas fa-gamepad"></i>
+                    <span>BIENVENIDO A</span>
+                </div>
+                
+                <h1 class="hero-title">
+                    <span class="glitch-text">ARCADE</span>
+                    <span class="hero-title-small">CUBA</span>
+                </h1>
+                
+                <p class="hero-description">
+                    Nuestro objetivo es proporcionar un entorno donde puedas jugar, competir, y socializar con otros apasionados del gaming en un espacio cómodo y moderno.
+                </p>
+                
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <span class="stat-number">200+</span>
+                        <span class="stat-label">JUEGOS</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">10</span>
+                        <span class="stat-label">PLATAFORMAS</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">100Mb</span>
+                        <span class="stat-label">FIBRA</span>
+                    </div>
+                </div>
+                
+                <div class="hero-buttons">
+                    <a href="#catalogo" class="btn-primary btn-large">
+                        <i class="fas fa-joystick"></i>
+                        VER CATÁLOGO
+                    </a>
+                </div>
+            </div>
+            
+            <div class="hero-image">
+                <div class="floating-card">
+                    <i class="fas fa-gamepad"></i>
+                </div>
+                <div class="floating-card card-2">
+                    <i class="fas fa-headset"></i>
+                </div>
+                <div class="floating-card card-3">
+                    <i class="fas fa-chess-queen"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CATÁLOGO DE JUEGOS ===== -->
+    <section class="catalogo-section" id="catalogo">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">CATÁLOGO <span>COMPLETO</span></h2>
+                <p class="section-subtitle">Más de 200 juegos en 10 plataformas diferentes</p>
+            </div>
+            
+            <!-- Pestañas de plataformas -->
+            <div class="platform-tabs">
+                <button class="platform-tab active" data-platform="steam">
+                    <i class="fab fa-steam"></i>
+                    <span>STEAM</span>
+                    <span class="tab-count" id="count-steam">0</span>
+                </button>
+                <button class="platform-tab" data-platform="ps5">
+                    <i class="fab fa-playstation"></i>
+                    <span>PS5</span>
+                    <span class="tab-count" id="count-ps5">0</span>
+                </button>
+                <button class="platform-tab" data-platform="vr">
+                    <i class="fas fa-vr-cardboard"></i>
+                    <span>META QUEST</span>
+                    <span class="tab-count" id="count-vr">0</span>
+                </button>
+                <button class="platform-tab" data-platform="epic">
+                    <i class="fab fa-epic-games"></i>
+                    <span>EPIC</span>
+                    <span class="tab-count" id="count-epic">0</span>
+                </button>
+                <button class="platform-tab" data-platform="bnet">
+                    <i class="fas fa-globe"></i>
+                    <span>BATTLENET</span>
+                    <span class="tab-count" id="count-bnet">0</span>
+                </button>
+                <button class="platform-tab" data-platform="riot">
+                    <i class="fas fa-fist-raised"></i>
+                    <span>RIOT</span>
+                    <span class="tab-count" id="count-riot">0</span>
+                </button>
+                <button class="platform-tab" data-platform="lan">
+                    <i class="fas fa-network-wired"></i>
+                    <span>LAN</span>
+                    <span class="tab-count" id="count-lan">0</span>
+                </button>
+                <button class="platform-tab" data-platform="single">
+                    <i class="fas fa-user"></i>
+                    <span>1 JUGADOR</span>
+                    <span class="tab-count" id="count-single">0</span>
+                </button>
+                <button class="platform-tab" data-platform="switch">
+                    <i class="fas fa-gamepad"></i>
+                    <span>SWITCH</span>
+                    <span class="tab-count" id="count-switch">0</span>
+                </button>
+                <button class="platform-tab" data-platform="android">
+                    <i class="fas fa-mobile-alt"></i>
+                    <span>ANDROID</span>
+                    <span class="tab-count" id="count-android">0</span>
+                </button>
+                <button class="platform-tab" data-platform="otros">
+                    <i class="fas fa-server"></i>
+                    <span>OTROS</span>
+                    <span class="tab-count" id="count-otros">0</span>
+                </button>
+            </div>
+            
+            <!-- Barra de búsqueda -->
+            <div class="catalogo-controls">
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="searchGames" placeholder="Buscar juego..." class="search-input">
+                </div>
+                <div class="filters-info">
+                    <span class="games-count" id="totalGamesCount">0</span> juegos
+                </div>
+            </div>
+            
+            <!-- Grid de juegos -->
+            <div class="juegos-grid" id="juegosGrid"></div>
+            
+            <!-- Mensaje sin resultados -->
+            <div class="no-results" id="noResults" style="display: none;">
+                <i class="fas fa-gamepad"></i>
+                <h3>No se encontraron juegos</h3>
+                <p>Prueba con otra búsqueda</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== MENÚ GASTRONÓMICO ===== -->
+    <section class="menu-gastronomico" id="gastronomia">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">MENÚ <span>GASTRONÓMICO</span></h2>
+                <p class="section-subtitle">Disfruta de nuestra selección de comidas y bebidas mientras juegas</p>
+            </div>
+            
+            <!-- Pestañas del menú -->
+            <div class="gastro-tabs">
+                <button class="gastro-tab active" data-categoria="baguettes">
+                    <i class="fas fa-bread-slice"></i>
+                    <span>BAGUETTES</span>
+                </button>
+                <button class="gastro-tab" data-categoria="pizzas">
+                    <i class="fas fa-pizza-slice"></i>
+                    <span>PIZZAS</span>
+                </button>
+                <button class="gastro-tab" data-categoria="postres">
+                    <i class="fas fa-ice-cream"></i>
+                    <span>POSTRES</span>
+                </button>
+                <button class="gastro-tab" data-categoria="batidos">
+                    <i class="fas fa-blender"></i>
+                    <span>BATIDOS</span>
+                </button>
+                <button class="gastro-tab" data-categoria="snacks">
+                    <i class="fas fa-cookie"></i>
+                    <span>SNACKS</span>
+                </button>
+                <button class="gastro-tab" data-categoria="confituras">
+                    <i class="fas fa-candy-cane"></i>
+                    <span>CONFITURAS</span>
+                </button>
+                <button class="gastro-tab" data-categoria="liquidos">
+                    <i class="fas fa-wine-bottle"></i>
+                    <span>LÍQUIDOS</span>
+                </button>
+                <button class="gastro-tab" data-categoria="cervezas">
+                    <i class="fas fa-beer"></i>
+                    <span>CERVEZAS</span>
+                </button>
+                <button class="gastro-tab" data-categoria="cafes">
+                    <i class="fas fa-coffee"></i>
+                    <span>CAFÉS</span>
+                </button>
+                <button class="gastro-tab" data-categoria="agregos">
+                    <i class="fas fa-plus-circle"></i>
+                    <span>AGREGOS</span>
+                </button>
+            </div>
+            
+            <!-- Grid de productos -->
+            <div class="gastro-grid" id="gastroGrid"></div>
+            
+            <!-- Banner VIP -->
+            <div class="gastro-vip-banner">
+                <div class="vip-banner-content">
+                    <i class="fas fa-crown"></i>
+                    <div>
+                        <h3>Beneficios VIP</h3>
+                        <p>VIP ÉLITE y LEYENDA tienen COMIDA + LÍQUIDO GRATIS</p>
+                    </div>
+                    <a href="#vip" class="btn-outline">VER VIP</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== OFERTAS ===== -->
+    <section class="section" id="ofertas">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title"><span>OFERTAS</span> ESPECIALES</h2>
+                <p class="section-subtitle">Descuentos progresivos por horas</p>
+            </div>
+            
+            <div class="ofertas-grid">
+                <div class="oferta-card">
+                    <div class="oferta-tag">-20%</div>
+                    <h3>3 HORAS</h3>
+                    <p class="oferta-desc">Sesión individual</p>
+                    <div class="oferta-precio">
+                        <span class="precio-original">$15</span>
+                        <span class="precio-oferta">$12</span>
+                    </div>
+                    <a href="#" class="btn-primary btn-small">RESERVAR</a>
+                </div>
+                
+                <div class="oferta-card popular">
+                    <div class="oferta-tag">-35%</div>
+                    <h3>6 HORAS</h3>
+                    <p class="oferta-desc">Sesión individual</p>
+                    <div class="oferta-precio">
+                        <span class="precio-original">$30</span>
+                        <span class="precio-oferta">$19.50</span>
+                    </div>
+                    <a href="#" class="btn-primary btn-small">RESERVAR</a>
+                </div>
+                
+                <div class="oferta-card">
+                    <div class="oferta-tag">-45%</div>
+                    <h3>10 HORAS</h3>
+                    <p class="oferta-desc">Sesión individual</p>
+                    <div class="oferta-precio">
+                        <span class="precio-original">$50</span>
+                        <span class="precio-oferta">$27.50</span>
+                    </div>
+                    <a href="#" class="btn-primary btn-small">RESERVAR</a>
+                </div>
+                
+                <div class="oferta-card torneo">
+                    <div class="oferta-tag">-50%</div>
+                    <h3>TORNEO 5 VS 5</h3>
+                    <p class="oferta-desc">12 horas - Equipo</p>
+                    <div class="oferta-precio">
+                        <span class="precio-original">$120</span>
+                        <span class="precio-oferta">$60</span>
+                    </div>
+                    <a href="#" class="btn-primary btn-small">RESERVAR</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== PROGRAMA VIP 2.0 ===== -->
+    <section class="vip-programa" id="vip">
+        <div class="container">
+            <div class="section-header">
+                <div class="vip-badge-principal">
+                    <i class="fas fa-crown"></i>
+                    <span>PROGRAMA VIP 2.0</span>
+                </div>
+                <h2 class="section-title">SISTEMA DE <span>MEMBRESÍA</span></h2>
+            </div>
+            
+            <!-- Niveles VIP -->
+            <div class="vip-niveles">
+                <h3 class="vip-subtitle"><i class="fas fa-clock"></i> NIVELES POR HORAS</h3>
+                
+                <div class="niveles-grid">
+                    <div class="nivel-card novato">
+                        <div class="nivel-header">
+                            <span class="nivel-icon">👶</span>
+                            <h4>NOVATO</h4>
+                        </div>
+                        <div class="nivel-horas">0-39 HORAS</div>
+                        <div class="nivel-descuento">-</div>
+                        <ul class="nivel-beneficios">
+                            <li><i class="fas fa-check"></i> Nivel inicial</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="nivel-card pro">
+                        <div class="nivel-header">
+                            <span class="nivel-icon">🥉</span>
+                            <h4>VIP PRO</h4>
+                        </div>
+                        <div class="nivel-horas">40-59 HORAS</div>
+                        <div class="nivel-descuento">20% DCTO</div>
+                        <ul class="nivel-beneficios">
+                            <li><i class="fas fa-check"></i> 20% descuento</li>
+                            <li><i class="fas fa-check"></i> 2h gratis para amigo</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="nivel-card elite popular">
+                        <div class="nivel-header">
+                            <span class="nivel-icon">🥈</span>
+                            <h4>VIP ÉLITE</h4>
+                        </div>
+                        <div class="nivel-horas">60-79 HORAS</div>
+                        <div class="nivel-descuento">30% DCTO</div>
+                        <ul class="nivel-beneficios">
+                            <li><i class="fas fa-check"></i> 30% descuento</li>
+                            <li><i class="fas fa-check"></i> 4h gratis para amigo</li>
+                            <li><i class="fas fa-check"></i> Comida + Líquido GRATIS</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="nivel-card leyenda">
+                        <div class="nivel-header">
+                            <span class="nivel-icon">🥇</span>
+                            <h4>VIP LEYENDA</h4>
+                        </div>
+                        <div class="nivel-horas">80+ HORAS</div>
+                        <div class="nivel-descuento">50% DCTO</div>
+                        <ul class="nivel-beneficios">
+                            <li><i class="fas fa-check"></i> 50% descuento</li>
+                            <li><i class="fas fa-check"></i> 6h gratis para amigo</li>
+                            <li><i class="fas fa-check"></i> Comida + Líquido GRATIS</li>
+                            <li><i class="fas fa-check"></i> Torneos GRATIS</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Simulador -->
+            <div class="vip-simulador">
+                <h3 class="vip-subtitle"><i class="fas fa-calculator"></i> SIMULA TU NIVEL</h3>
+                
+                <div class="simulador-container">
+                    <div class="simulador-input">
+                        <label>¿Cuántas horas juegas al mes?</label>
+                        <div class="input-group">
+                            <input type="range" id="horasRange" min="0" max="100" value="45" class="horas-slider">
+                            <span class="horas-value" id="horasValue">45 horas</span>
+                        </div>
+                    </div>
+                    <div class="simulador-resultado" id="simuladorResultado"></div>
+                </div>
+            </div>
+            
+            <!-- Registro VIP -->
+            <div class="vip-registro">
+                <div class="registro-container">
+                    <div class="registro-info">
+                        <h3>¡Inscríbete gratis!</h3>
+                        <p><i class="fas fa-check-circle"></i> Acumula horas</p>
+                        <p><i class="fas fa-check-circle"></i> Recibe descuentos</p>
+                    </div>
+                    
+                    <form class="registro-form" id="vipFormRegistro">
+                        <input type="text" placeholder="Nombre" required>
+                        <input type="email" placeholder="Email" required>
+                        <input type="tel" placeholder="WhatsApp" required>
+                        <button type="submit" class="btn-primary btn-block">REGISTRARME</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-logo">ARCADE<span>CUBA</span></div>
+                    <p>❤ Hecho por Gamers para Gamers</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>ENLACES</h4>
+                    <ul>
+                        <li><a href="#inicio">Inicio</a></li>
+                        <li><a href="#catalogo">Catálogo</a></li>
+                        <li><a href="#gastronomia">Comida</a></li>
+                        <li><a href="#vip">VIP</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>Arcade S.U.R.L. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
