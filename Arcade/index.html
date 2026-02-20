@@ -13,6 +13,9 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- FONDO DE CUADRÍCULA EN TODA LA PÁGINA -->
+    <div class="grid-background"></div>
+
     <!-- ===== HEADER ===== -->
     <header class="header" id="header">
         <div class="container header-container">
@@ -66,7 +69,7 @@
                         <span class="stat-label">JUEGOS</span>
                     </div>
                     <div class="stat-item">
-                        <span class="stat-number">10</span>
+                        <span class="stat-number">11</span>
                         <span class="stat-label">PLATAFORMAS</span>
                     </div>
                     <div class="stat-item">
@@ -97,150 +100,155 @@
         </div>
     </section>
 
-    <!-- ===== CATÁLOGO DE JUEGOS ===== -->
+    <!-- ===== CATÁLOGO DE JUEGOS (CON ENLACES A CARPETAS) ===== -->
     <section class="catalogo-section" id="catalogo">
         <div class="container">
             <div class="section-header">
                 <h2 class="section-title">CATÁLOGO <span>COMPLETO</span></h2>
-                <p class="section-subtitle">Más de 200 juegos en 10 plataformas diferentes</p>
+                <p class="section-subtitle">Selecciona una plataforma para ver todos sus juegos</p>
             </div>
             
-            <!-- Pestañas de plataformas -->
+            <!-- Pestañas de plataformas - ENLACES A CARPETA CATALOGO -->
             <div class="platform-tabs">
-                <button class="platform-tab active" data-platform="steam">
+                <a href="catalogo/steam.html" class="platform-tab">
                     <i class="fab fa-steam"></i>
                     <span>STEAM</span>
-                    <span class="tab-count" id="count-steam">0</span>
-                </button>
-                <button class="platform-tab" data-platform="ps5">
+                    <span class="tab-count">104</span>
+                </a>
+                <a href="catalogo/ps5.html" class="platform-tab">
                     <i class="fab fa-playstation"></i>
                     <span>PS5</span>
-                    <span class="tab-count" id="count-ps5">0</span>
-                </button>
-                <button class="platform-tab" data-platform="vr">
+                    <span class="tab-count">45</span>
+                </a>
+                <a href="catalogo/vr.html" class="platform-tab">
                     <i class="fas fa-vr-cardboard"></i>
                     <span>META QUEST</span>
-                    <span class="tab-count" id="count-vr">0</span>
-                </button>
-                <button class="platform-tab" data-platform="epic">
+                    <span class="tab-count">80</span>
+                </a>
+                <a href="catalogo/epic.html" class="platform-tab">
                     <i class="fab fa-epic-games"></i>
                     <span>EPIC</span>
-                    <span class="tab-count" id="count-epic">0</span>
-                </button>
-                <button class="platform-tab" data-platform="bnet">
+                    <span class="tab-count">7</span>
+                </a>
+                <a href="catalogo/bnet.html" class="platform-tab">
                     <i class="fas fa-globe"></i>
                     <span>BATTLENET</span>
-                    <span class="tab-count" id="count-bnet">0</span>
-                </button>
-                <button class="platform-tab" data-platform="riot">
+                    <span class="tab-count">7</span>
+                </a>
+                <a href="catalogo/riot.html" class="platform-tab">
                     <i class="fas fa-fist-raised"></i>
                     <span>RIOT</span>
-                    <span class="tab-count" id="count-riot">0</span>
-                </button>
-                <button class="platform-tab" data-platform="lan">
+                    <span class="tab-count">5</span>
+                </a>
+                <a href="catalogo/lan.html" class="platform-tab">
                     <i class="fas fa-network-wired"></i>
                     <span>LAN</span>
-                    <span class="tab-count" id="count-lan">0</span>
-                </button>
-                <button class="platform-tab" data-platform="single">
+                    <span class="tab-count">40</span>
+                </a>
+                <a href="catalogo/single.html" class="platform-tab">
                     <i class="fas fa-user"></i>
                     <span>1 JUGADOR</span>
-                    <span class="tab-count" id="count-single">0</span>
-                </button>
-                <button class="platform-tab" data-platform="switch">
+                    <span class="tab-count">25</span>
+                </a>
+                <a href="catalogo/switch.html" class="platform-tab">
                     <i class="fas fa-gamepad"></i>
                     <span>SWITCH</span>
-                    <span class="tab-count" id="count-switch">0</span>
-                </button>
-                <button class="platform-tab" data-platform="android">
+                    <span class="tab-count">15</span>
+                </a>
+                <a href="catalogo/android.html" class="platform-tab">
                     <i class="fas fa-mobile-alt"></i>
                     <span>ANDROID</span>
-                    <span class="tab-count" id="count-android">0</span>
-                </button>
-                <button class="platform-tab" data-platform="otros">
+                    <span class="tab-count">3</span>
+                </a>
+                <a href="catalogo/otros.html" class="platform-tab">
                     <i class="fas fa-server"></i>
                     <span>OTROS</span>
-                    <span class="tab-count" id="count-otros">0</span>
-                </button>
+                    <span class="tab-count">50</span>
+                </a>
             </div>
             
             <!-- Barra de búsqueda -->
             <div class="catalogo-controls">
                 <div class="search-box">
                     <i class="fas fa-search"></i>
-                    <input type="text" id="searchGames" placeholder="Buscar juego..." class="search-input">
+                    <input type="text" id="searchGames" placeholder="Buscar juego en destacados..." class="search-input">
                 </div>
                 <div class="filters-info">
-                    <span class="games-count" id="totalGamesCount">0</span> juegos
+                    <span class="games-count" id="totalGamesCount">8</span> destacados
                 </div>
             </div>
             
-            <!-- Grid de juegos -->
-            <div class="juegos-grid" id="juegosGrid"></div>
-            
-            <!-- Mensaje sin resultados -->
-            <div class="no-results" id="noResults" style="display: none;">
-                <i class="fas fa-gamepad"></i>
-                <h3>No se encontraron juegos</h3>
-                <p>Prueba con otra búsqueda</p>
+            <!-- VISTA PREVIA DE JUEGOS DESTACADOS -->
+            <div class="vista-previa">
+                <h3><i class="fas fa-star" style="color: var(--accent);"></i> JUEGOS DESTACADOS</h3>
+                <div class="juegos-grid" id="juegosDestacados"></div>
+                <div class="ver-todos">
+                    
+                    <a href="catalogo/steam.html" class="btn-primary">VER CATÁLOGO COMPLETO</a>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- ===== MENÚ GASTRONÓMICO ===== -->
+
+
+
+    <!-- ===== MENÚ GASTRONÓMICO (CON ENLACES A CARPETA MENU) ===== -->
     <section class="menu-gastronomico" id="gastronomia">
         <div class="container">
             <div class="section-header">
+                -
+                -
+                -
                 <h2 class="section-title">MENÚ <span>GASTRONÓMICO</span></h2>
-                <p class="section-subtitle">Disfruta de nuestra selección de comidas y bebidas mientras juegas</p>
+                <p class="section-subtitle">Selecciona una categoría para ver todos los productos</p>
             </div>
             
-            <!-- Pestañas del menú -->
+            <!-- Pestañas del menú - ENLACES A CARPETA MENU -->
             <div class="gastro-tabs">
-                <button class="gastro-tab active" data-categoria="baguettes">
+                <a href="menu/baguettes.html" class="gastro-tab">
                     <i class="fas fa-bread-slice"></i>
                     <span>BAGUETTES</span>
-                </button>
-                <button class="gastro-tab" data-categoria="pizzas">
+                </a>
+                <a href="menu/pizzas.html" class="gastro-tab">
                     <i class="fas fa-pizza-slice"></i>
                     <span>PIZZAS</span>
-                </button>
-                <button class="gastro-tab" data-categoria="postres">
+                </a>
+                <a href="menu/postres.html" class="gastro-tab">
                     <i class="fas fa-ice-cream"></i>
                     <span>POSTRES</span>
-                </button>
-                <button class="gastro-tab" data-categoria="batidos">
-                    <i class="fas fa-blender"></i>
-                    <span>BATIDOS</span>
-                </button>
-                <button class="gastro-tab" data-categoria="snacks">
+                </a>
+                
+                <a href="menu/snacks.html" class="gastro-tab">
                     <i class="fas fa-cookie"></i>
                     <span>SNACKS</span>
-                </button>
-                <button class="gastro-tab" data-categoria="confituras">
+                </a>
+                <a href="menu/confituras.html" class="gastro-tab">
                     <i class="fas fa-candy-cane"></i>
                     <span>CONFITURAS</span>
-                </button>
-                <button class="gastro-tab" data-categoria="liquidos">
-                    <i class="fas fa-wine-bottle"></i>
-                    <span>LÍQUIDOS</span>
-                </button>
-                <button class="gastro-tab" data-categoria="cervezas">
-                    <i class="fas fa-beer"></i>
-                    <span>CERVEZAS</span>
-                </button>
-                <button class="gastro-tab" data-categoria="cafes">
+                </a>
+                <a href="menu/bebidas.html" class="gastro-tab">
+                     <i class="fas fa-wine-bottle"></i>
+                    <span>BEBIDAS</span>
+                </a>  
+                <a href="menu/cafes.html" class="gastro-tab">
                     <i class="fas fa-coffee"></i>
                     <span>CAFÉS</span>
-                </button>
-                <button class="gastro-tab" data-categoria="agregos">
+                </a>
+                <a href="menu/agregos.html" class="gastro-tab">
                     <i class="fas fa-plus-circle"></i>
                     <span>AGREGOS</span>
-                </button>
+                </a>
             </div>
             
-            <!-- Grid de productos -->
-            <div class="gastro-grid" id="gastroGrid"></div>
+            <!-- VISTA PREVIA DE PRODUCTOS DESTACADOS -->
+            <div class="vista-previa">
+                <h3><i class="fas fa-star" style="color: var(--accent);"></i> PRODUCTOS DESTACADOS</h3>
+                <div class="productos-grid" id="productosDestacados"></div>
+                <div class="ver-todos">
+                    <a href="menu/baguettes.html" class="btn-primary">VER MENÚ COMPLETO</a>
+                </div>
+            </div>
             
             <!-- Banner VIP -->
             <div class="gastro-vip-banner">
