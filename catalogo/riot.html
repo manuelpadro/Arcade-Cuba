@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arcade Cuba - Catálogo Riot Games</title>
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800;900&family=Orbitron:wght@400;600;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Estilos -->
+    <link rel="stylesheet" href="../style.css">
+    
+    <style>
+        .catalogo-detalle {
+            padding-top: 120px;
+            min-height: 100vh;
+        }
+        
+        .catalogo-header {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+        
+        .catalogo-header h1 {
+            font-size: 3rem;
+            font-family: 'Orbitron', sans-serif;
+        }
+        
+        .catalogo-header h1 span {
+            color: #ff0022;
+        }
+        
+        .platform-badge {
+            background: linear-gradient(45deg, #ff0022, #ff4d4d);
+            padding: 8px 25px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+        
+        .btn-volver {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 30px;
+            color: var(--text);
+            text-decoration: none;
+            transition: 0.3s;
+        }
+        
+        .btn-volver:hover {
+            color: #ff0022;
+            transform: translateX(-5px);
+        }
+        
+        .contador-juegos {
+            background: rgba(255,0,34,0.05);
+            border: 1px solid rgba(255,0,34,0.2);
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        
+        .contador-juegos .numero {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: #ff0022;
+            display: block;
+        }
+        
+        .search-section {
+            margin-bottom: 30px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Fondo de cuadrícula -->
+    <div class="grid-background"></div>
+
+    <!-- ===== HEADER ===== -->
+    <header class="header">
+        <div class="container header-container">
+            <div class="logo">
+                <a href="../index.html">
+                    ARCADE<span>CUBA</span>
+                </a>
+            </div>
+            
+            <nav class="nav-menu">
+                <a href="../index.html" class="nav-link">INICIO</a>
+                <a href="../index.html#catalogo" class="nav-link active">CATÁLOGO</a>
+                <a href="../index.html#gastronomia" class="nav-link">COMIDA</a>
+                <a href="../index.html#ofertas" class="nav-link">OFERTAS</a>
+                <a href="../index.html#vip" class="nav-link">VIP</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ===== CATÁLOGO DETALLE ===== -->
+    <section class="catalogo-detalle">
+        <div class="container">
+            <!-- Botón volver -->
+            <a href="../index.html#catalogo" class="btn-volver">
+                <i class="fas fa-arrow-left"></i> Volver al catálogo
+            </a>
+            
+            <!-- Header de la plataforma -->
+            <div class="catalogo-header">
+                <h1><span>RIOT GAMES</span></h1>
+                <div class="platform-badge">
+                    <i class="fas fa-fist-raised"></i> Riot
+                </div>
+            </div>
+            
+            <!-- Contador -->
+            <div class="contador-juegos">
+                <span class="numero">5</span>
+                <span>juegos disponibles de Riot Games</span>
+            </div>
+            
+            <!-- Buscador -->
+            <div class="search-section">
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="searchPlataforma" placeholder="Buscar en Riot..." class="search-input">
+                </div>
+            </div>
+            
+            <!-- Grid de juegos -->
+            <div class="juegos-grid" id="juegosPlataforma">
+                <!-- Se cargarán con JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer" style="margin-top: 50px;">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>Arcade Cuba © 2026 - Todos los derechos reservados</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Datos de juegos de Riot Games
+        const juegosRiot = [
+            "2XKO", "League of Legends", "Legends of Runeterra", 
+            "Teamfight Tactics", "Valorant"
+        ];
+        
+        function cargarJuegos() {
+            const grid = document.getElementById('juegosPlataforma');
+            const searchInput = document.getElementById('searchPlataforma');
+            
+            function renderizar(juegos) {
+                let html = '';
+                juegos.forEach(juego => {
+                    html += `
+                        <div class="juego-card">
+                            <div class="juego-header">
+                                <i class="fas fa-fist-raised juego-plataforma" style="color: #ff0022;"></i>
+                                <h3 class="juego-nombre">${juego}</h3>
+                            </div>
+                        </div>
+                    `;
+                });
+                grid.innerHTML = html;
+            }
+            
+            renderizar(juegosRiot);
+            
+            if (searchInput) {
+                searchInput.addEventListener('input', (e) => {
+                    const termino = e.target.value.toLowerCase();
+                    const filtrados = juegosRiot.filter(j => 
+                        j.toLowerCase().includes(termino)
+                    );
+                    renderizar(filtrados);
+                });
+            }
+        }
+        
+        document.addEventListener('DOMContentLoaded', cargarJuegos);
+    </script>
+</body>
+</html>
