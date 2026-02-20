@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arcade Cuba - Menú Bebidas</title>
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800;900&family=Orbitron:wght@400;600;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Estilos -->
+    <link rel="stylesheet" href="../style.css">
+    
+    <style>
+        .menu-detalle {
+            padding-top: 120px;
+            min-height: 100vh;
+        }
+        
+        .menu-header {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+        
+        .menu-header h1 {
+            font-size: 3rem;
+            font-family: 'Orbitron', sans-serif;
+        }
+        
+        .menu-header h1 span {
+            color: var(--accent);
+        }
+        
+        .categoria-badge {
+            background: linear-gradient(45deg, var(--accent), #ffaa00);
+            padding: 8px 25px;
+            border-radius: 50px;
+            font-weight: 700;
+            color: #000;
+        }
+        
+        .btn-volver {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 30px;
+            color: var(--text);
+            text-decoration: none;
+            transition: 0.3s;
+        }
+        
+        .btn-volver:hover {
+            color: var(--accent);
+            transform: translateX(-5px);
+        }
+        
+        .contador-productos {
+            background: rgba(255,215,0,0.05);
+            border: 1px solid rgba(255,215,0,0.2);
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        
+        .contador-productos .numero {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: var(--accent);
+            display: block;
+        }
+        
+        .subcategoria {
+            margin: 40px 0 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--accent);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.8rem;
+            color: var(--accent);
+        }
+        
+        .subcategoria i {
+            font-size: 2rem;
+        }
+        
+        .productos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Fondo de cuadrícula -->
+    <div class="grid-background"></div>
+
+    <!-- ===== HEADER ===== -->
+    <header class="header">
+        <div class="container header-container">
+            <div class="logo">
+                <a href="../index.html">
+                    ARCADE<span>CUBA</span>
+                </a>
+            </div>
+            
+            <nav class="nav-menu">
+                <a href="../index.html" class="nav-link">INICIO</a>
+                <a href="../index.html#catalogo" class="nav-link">CATÁLOGO</a>
+                <a href="../index.html#gastronomia" class="nav-link active">COMIDA</a>
+                <a href="../index.html#ofertas" class="nav-link">OFERTAS</a>
+                <a href="../index.html#vip" class="nav-link">VIP</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ===== MENÚ DETALLE ===== -->
+    <section class="menu-detalle">
+        <div class="container">
+            <!-- Botón volver -->
+            <a href="../index.html#gastronomia" class="btn-volver">
+                <i class="fas fa-arrow-left"></i> Volver al menú
+            </a>
+            
+            <!-- Header de la categoría -->
+            <div class="menu-header">
+                <h1><span>BEBIDAS</span></h1>
+                <div class="categoria-badge">
+                    <i class="fas fa-wine-bottle"></i> 14 productos
+                </div>
+            </div>
+            
+            <!-- Contador total -->
+            <div class="contador-productos">
+                <span class="numero">14</span>
+                <span>bebidas disponibles</span>
+            </div>
+            
+            <!-- ===== SUBCATEGORÍA: LÍQUIDOS ===== -->
+            <div class="subcategoria">
+                <i class="fas fa-wine-bottle"></i>
+                <h2>LÍQUIDOS</h2>
+            </div>
+            
+            <div class="productos-grid">
+                <!-- Agua Natural -->
+                <div class="producto-card">
+                    <h3 class="producto-nombre">Agua Natural</h3>
+                    <p class="producto-descripcion">Agua embotellada 500ml</p>
+                    <div class="producto-footer">
+                        <span class="producto-precio">₡440</span>
+                        <button class="btn-agregar" onclick="alert('💧 Agregado: Agua Natural - ₡440')">
+                            <i class="fas fa-plus"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Malta -->
+                <div class="producto-card">
+                    <h3 class="producto-nombre">Malta</h3>
+                    <p class="producto-descripcion">Bebida de malta</p>
+                    <div class="producto-footer">
+                        <span class="producto-precio">₡630</span>
+                        <button class="btn-agregar" onclick="alert('🥤 Agregado: Malta - ₡630')">
+                            <i class="fas fa-plus"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Floridita Cola -->
+                <div class="producto-card">
+                    <h3 class="producto-nombre">Floridita Cola</h3>
+                    <p class="producto-descripcion">Gaseosa sabor cola</p>
+                    <div class="producto-footer">
+                        <span class="producto-precio">₡580</span>
+                        <button class="btn-agregar" onclick="alert('🥤 Agregado: Floridita Cola - ₡580')">
+                            <i class="fas fa-plus"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Floridita Piña -->
+                <div class="producto-card">
+                    <h3 class="producto-nombre">Floridita Piña</h3>
+                    <p class="producto-descripcion">Gaseosa sabor piña</p>
+                    <div class="producto-footer">
+                        <span class="producto-precio">₡580</span>
+                        <button class="btn-agregar" onclick="alert('🥤 Agregado: Floridita Piña - ₡580')">
+                            <i class="fas fa-plus"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Floridita Limón -->
+                <div class="producto-card">
+                    <h3 class="producto-nombre">Floridita Limón</h3>
+                    <p class="producto-descripcion">Gaseosa sabor limón</p>
+                    <div class="producto-footer">
+                        <span class="producto-precio">₡580</span>
+                        <button class="btn-agregar" onclick="alert('🥤 Agregado: Floridita Limón - ₡580')">
+                            <i class="fas fa-plus"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Linx -->
+                <div class="producto-card">
+                    <h3 class="producto-nombre">Linx</h3>
+                    <p class="producto-descripcion">Bebida energizante</p>
+                    <div class="producto-footer">
+                        <span class="producto-precio">₡630</span>
+                        <button class="btn-agregar" onclick="alert('⚡ Agregado: Linx - ₡630')">
+                            <i class="fas fa-plus"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Redbull -->
+                <div class="producto-card">
+                    <h3 class="producto-nombre">Redbull</h3>
+                    <p class="producto-descripcion">Bebida energizante</p>
+                    <div class="producto-footer">
+                        <span class="producto-precio">₡850</span>
+                        <button class="btn-agregar" onclick="alert('⚡ Agregado: Redbull - ₡850')">
+                            <i class="fas fa-plus"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Jugo de cajita -->
+                <div class="producto-card">
+                    <h3 class="producto-nombre">Jugo de cajita</h3>
+                    <p class="producto-descripcion">Varios sabores de jugos</p>
+                    <div class="producto-footer">
+                        <span class="producto-precio">₡410</span>
+                        <button class="btn-agregar" onclick="alert('🧃 Agregado: Jugo de cajita - ₡410')">
+                            <i class="fas fa-plus"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- ===== SUBCATEGORÍA: CERVEZAS ===== -->
+            <div class="subcategoria">
+                <i class="fas fa-beer"></i>
+                <h2>CERVEZAS</h2>
+            </div>
+            
+            <div class="productos-grid">
+                <!-- Cerveza Cristal -->
+                <div class="producto-card">
+                    <h3 class="producto-nombre">Cerveza Cristal</h3>
+                    <p class="producto-descripcion">Botella de cerveza</p>
+                    <div class="producto-footer">
+                        <span class="producto-precio">₡710</span>
+                        <button class="btn-agregar" onclick="alert('🍺 Agregado: Cerveza Cristal - ₡710')">
+                            <i class="fas fa-plus"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Cerveza Presidente -->
+                <div class="producto-card">
+                    <h3 class="producto-nombre">Cerveza Presidente</h3>
+                    <p class="producto-descripcion">Botella de cerveza</p>
+                    <div class="producto-footer">
+                        <span class="producto-precio">₡630</span>
+                        <button class="btn-agregar" onclick="alert('🍺 Agregado: Cerveza Presidente - ₡630')">
+                            <i class="fas fa-plus"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- ===== SUBCATEGORÍA: BATIDOS ===== -->
+            <div class="subcategoria">
+                <i class="fas fa-blender"></i>
+                <h2>BATIDOS DE HELADO</h2>
+            </div>
+            
+            <div class="productos-grid">
+                <!-- Batido de Vainilla -->
+                <div class="producto-card">
+                    <h3 class="producto-nombre">Batido de Vainilla</h3>
+                    <p class="producto-descripcion">Batido cremoso de helado de vainilla</p>
+                    <div class="producto-footer">
+                        <span class="producto-precio">₡1,480</span>
+                        <button class="btn-agregar" onclick="alert('🥤 Agregado: Batido de Vainilla - ₡1,480')">
+                            <i class="fas fa-plus"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Batido de Caramelo -->
+                <div class="producto-card">
+                    <h3 class="producto-nombre">Batido de Caramelo</h3>
+                    <p class="producto-descripcion">Batido cremoso de helado de caramelo</p>
+                    <div class="producto-footer">
+                        <span class="producto-precio">₡1,480</span>
+                        <button class="btn-agregar" onclick="alert('🥤 Agregado: Batido de Caramelo - ₡1,480')">
+                            <i class="fas fa-plus"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Beneficio VIP -->
+            <div class="gastro-vip-banner" style="margin-top: 50px;">
+                <div class="vip-banner-content">
+                    <i class="fas fa-crown"></i>
+                    <div>
+                        <h3>Beneficios VIP</h3>
+                        <p>VIP ÉLITE y LEYENDA tienen BEBIDAS GRATIS en cada visita</p>
+                    </div>
+                    <a href="../index.html#vip" class="btn-outline">VER VIP</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer" style="margin-top: 50px;">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>Arcade Cuba © 2026 - Todos los derechos reservados</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
