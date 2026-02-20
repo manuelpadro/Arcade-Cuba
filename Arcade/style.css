@@ -25,25 +25,27 @@ body {
     overflow-x: hidden;
 }
 
-/* Grid de fondo */
-body::before {
-    content: '';
+/* ===== FONDO DE CUADRÍCULA EN TODA LA PÁGINA ===== */
+.grid-background {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(rgba(0,243,255,0.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(0,243,255,0.03) 1px, transparent 1px);
+    background-image: 
+        linear-gradient(rgba(0, 243, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 243, 255, 0.03) 1px, transparent 1px);
     background-size: 50px 50px;
     pointer-events: none;
-    z-index: -1;
+    z-index: 0;
 }
 
 .container {
     max-width: 1400px;
     margin: 0 auto;
     padding: 0 30px;
+    position: relative;
+    z-index: 2;
 }
 
 /* ===== HEADER ===== */
@@ -53,11 +55,10 @@ body::before {
     left: 0;
     width: 100%;
     z-index: 1000;
-    padding: 15px 0;
+    padding: 20px 0;
     background: rgba(5, 6, 7, 0.95);
     backdrop-filter: blur(10px);
     border-bottom: 2px solid var(--primary);
-    box-shadow: 0 0 20px var(--primary-glow);
     transition: 0.3s;
 }
 
@@ -77,11 +78,14 @@ body::before {
     font-family: 'Orbitron', sans-serif;
     font-size: 1.8rem;
     font-weight: 900;
+    position: relative;
 }
 
 .logo a {
     text-decoration: none;
     color: var(--text);
+    position: relative;
+    z-index: 1;
 }
 
 .logo span {
@@ -89,9 +93,21 @@ body::before {
     text-shadow: 0 0 10px var(--primary);
 }
 
+.logo-glow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--primary);
+    filter: blur(15px);
+    opacity: 0.3;
+    z-index: 0;
+}
+
 .nav-menu {
     display: flex;
-    gap: 25px;
+    gap: 30px;
     flex-wrap: wrap;
 }
 
@@ -152,6 +168,7 @@ body::before {
     display: inline-block;
     border: none;
     cursor: pointer;
+    font-weight: 600;
 }
 
 .btn-primary:hover {
@@ -187,6 +204,7 @@ body::before {
     display: flex;
     align-items: center;
     padding: 100px 0;
+    position: relative;
 }
 
 .hero-container {
@@ -194,6 +212,21 @@ body::before {
     grid-template-columns: 1fr 1fr;
     gap: 50px;
     align-items: center;
+}
+
+.hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 16px;
+    background: rgba(0, 243, 255, 0.1);
+    border: 1px solid var(--primary);
+    border-radius: 50px;
+    margin-bottom: 30px;
+}
+
+.hero-badge i {
+    color: var(--primary);
 }
 
 .hero-title {
@@ -219,10 +252,28 @@ body::before {
     99% { transform: skew(-3deg); }
 }
 
+.hero-title-small {
+    display: block;
+    font-size: 0.5em;
+    color: var(--text);
+    margin-top: 5px;
+}
+
+.hero-description {
+    color: var(--text-dim);
+    margin-bottom: 20px;
+    line-height: 1.8;
+}
+
 .hero-stats {
     display: flex;
     gap: 30px;
     margin: 30px 0;
+    flex-wrap: wrap;
+}
+
+.stat-item {
+    text-align: center;
 }
 
 .stat-number {
@@ -230,6 +281,18 @@ body::before {
     font-size: 2rem;
     font-weight: 900;
     color: var(--primary);
+    text-shadow: 0 0 20px var(--primary);
+}
+
+.stat-label {
+    font-size: 0.9rem;
+    color: var(--text-dim);
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
 }
 
 .hero-image {
@@ -241,7 +304,7 @@ body::before {
     position: absolute;
     width: 120px;
     height: 120px;
-    background: var(--card-bg);
+    background: rgba(20, 25, 35, 0.8);
     backdrop-filter: blur(10px);
     border: 2px solid var(--primary);
     border-radius: 20px;
@@ -250,6 +313,7 @@ body::before {
     justify-content: center;
     font-size: 3rem;
     color: var(--primary);
+    box-shadow: 0 0 50px var(--primary-glow);
     animation: float 6s ease-in-out infinite;
 }
 
@@ -259,6 +323,7 @@ body::before {
     animation-delay: 1s;
     border-color: var(--secondary);
     color: var(--secondary);
+    box-shadow: 0 0 50px var(--secondary-glow);
 }
 
 .floating-card.card-3 {
@@ -277,16 +342,18 @@ body::before {
 /* ===== SECCIONES ===== */
 .section {
     padding: 80px 0;
+    position: relative;
 }
 
 .section-header {
     text-align: center;
-    margin-bottom: 40px;
+    margin-bottom: 50px;
 }
 
 .section-title {
     font-size: clamp(2rem, 5vw, 3rem);
     font-weight: 800;
+    margin-bottom: 15px;
 }
 
 .section-title span {
@@ -299,54 +366,83 @@ body::before {
     font-size: 1.1rem;
 }
 
-/* ===== CATÁLOGO ===== */
-.catalogo-section {
-    padding: 80px 0;
-    background: linear-gradient(180deg, var(--bg-dark) 0%, var(--bg-darker) 100%);
-}
-
+/* ===== PLATFORM TABS ===== */
 .platform-tabs {
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
     justify-content: center;
-    margin-bottom: 30px;
+    margin-bottom: 40px;
 }
 
 .platform-tab {
-    padding: 10px 15px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 20px;
     background: rgba(0, 0, 0, 0.5);
     border: 1px solid rgba(0, 243, 255, 0.3);
     border-radius: 50px;
     color: var(--text);
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    gap: 8px;
+    text-decoration: none;
     transition: 0.3s;
+    font-size: 0.9rem;
 }
 
 .platform-tab i {
     color: var(--primary);
+    font-size: 1.1rem;
 }
 
-.platform-tab.active {
-    background: var(--primary);
+.platform-tab:hover {
     border-color: var(--primary);
-    color: var(--bg-dark);
-}
-
-.platform-tab.active i {
-    color: var(--bg-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 0 20px var(--primary-glow);
 }
 
 .tab-count {
-    background: rgba(255,255,255,0.2);
-    padding: 2px 6px;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 2px 8px;
     border-radius: 50px;
     font-size: 0.8rem;
+    margin-left: 5px;
 }
 
+/* ===== GASTRO TABS ===== */
+.gastro-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    margin-bottom: 40px;
+}
+
+.gastro-tab {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 20px;
+    background: rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(255, 215, 0, 0.3);
+    border-radius: 50px;
+    color: var(--text);
+    text-decoration: none;
+    transition: 0.3s;
+    font-size: 0.9rem;
+}
+
+.gastro-tab i {
+    color: var(--accent);
+    font-size: 1.1rem;
+}
+
+.gastro-tab:hover {
+    border-color: var(--accent);
+    transform: translateY(-2px);
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+}
+
+/* ===== CATÁLOGO CONTROLS ===== */
 .catalogo-controls {
     display: flex;
     justify-content: space-between;
@@ -355,7 +451,7 @@ body::before {
     gap: 20px;
     margin-bottom: 30px;
     padding: 20px;
-    background: rgba(0,0,0,0.3);
+    background: rgba(0, 0, 0, 0.3);
     border-radius: 15px;
 }
 
@@ -376,40 +472,65 @@ body::before {
 .search-input {
     width: 100%;
     padding: 12px 15px 12px 45px;
-    background: rgba(0,0,0,0.5);
-    border: 2px solid rgba(0,243,255,0.3);
-    border-radius: 10px;
+    background: rgba(0, 0, 0, 0.5);
+    border: 2px solid rgba(0, 243, 255, 0.3);
+    border-radius: 50px;
     color: var(--text);
+    font-size: 1rem;
 }
 
 .search-input:focus {
     outline: none;
     border-color: var(--primary);
+    box-shadow: 0 0 20px var(--primary-glow);
+}
+
+.filters-info {
+    font-size: 1.1rem;
+    color: var(--text-dim);
 }
 
 .games-count {
     font-size: 1.5rem;
     font-weight: 900;
     color: var(--primary);
+    text-shadow: 0 0 10px var(--primary);
 }
 
+/* ===== JUEGOS GRID ===== */
 .juegos-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 20px;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 15px;
+    margin-top: 20px;
 }
 
 .juego-card {
-    background: rgba(0,0,0,0.5);
-    border: 1px solid rgba(0,243,255,0.2);
-    border-radius: 12px;
+    background: rgba(20, 25, 35, 0.8);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
     padding: 15px;
+    text-align: center;
     transition: 0.3s;
+    animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .juego-card:hover {
     transform: translateY(-5px);
     border-color: var(--primary);
+    box-shadow: 0 10px 30px rgba(0, 243, 255, 0.2);
 }
 
 .juego-card.requiere-biblio {
@@ -418,14 +539,16 @@ body::before {
 
 .juego-header {
     display: flex;
+    flex-direction: column;
     align-items: center;
     gap: 10px;
     margin-bottom: 10px;
 }
 
 .juego-plataforma {
-    font-size: 1.2rem;
+    font-size: 2rem;
     min-width: 24px;
+    text-align: center;
 }
 
 .juego-card[data-plataforma="steam"] .juego-plataforma { color: #00f3ff; }
@@ -433,87 +556,46 @@ body::before {
 .juego-card[data-plataforma="vr"] .juego-plataforma { color: #ff00c3; }
 
 .juego-nombre {
-    font-size: 1rem;
+    font-size: 0.9rem;
     font-weight: 600;
     flex: 1;
+    line-height: 1.3;
 }
 
 .juego-badge {
+    display: inline-block;
     padding: 4px 8px;
-    background: rgba(255,0,195,0.2);
+    background: rgba(255, 0, 195, 0.2);
     border: 1px solid var(--secondary);
     border-radius: 5px;
     font-size: 0.7rem;
     color: var(--secondary);
-    display: inline-block;
+    margin-top: 8px;
 }
 
-.no-results {
-    text-align: center;
-    padding: 60px 20px;
-    background: rgba(0,0,0,0.3);
-    border-radius: 15px;
-}
-
-/* ===== MENÚ GASTRONÓMICO ===== */
-.menu-gastronomico {
-    padding: 80px 0;
-    background: linear-gradient(180deg, var(--bg-darker) 0%, var(--bg-dark) 100%);
-}
-
-.gastro-tabs {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    justify-content: center;
-    margin-bottom: 40px;
-}
-
-.gastro-tab {
-    padding: 10px 15px;
-    background: rgba(0,0,0,0.5);
-    border: 1px solid rgba(0,243,255,0.3);
-    border-radius: 50px;
-    color: var(--text);
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    transition: 0.3s;
-}
-
-.gastro-tab i {
-    color: var(--primary);
-}
-
-.gastro-tab.active {
-    background: linear-gradient(45deg, var(--primary), var(--secondary));
-    border-color: transparent;
-}
-
-.gastro-tab.active i {
-    color: white;
-}
-
-.gastro-grid {
+/* ===== PRODUCTOS GRID ===== */
+.productos-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 25px;
-    margin: 40px 0;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
 }
 
 .producto-card {
-    background: rgba(20,25,35,0.8);
-    border: 1px solid rgba(0,243,255,0.2);
+    background: rgba(20, 25, 35, 0.8);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 215, 0, 0.2);
     border-radius: 15px;
     padding: 20px;
     transition: 0.3s;
     position: relative;
+    animation: fadeIn 0.5s ease;
 }
 
 .producto-card:hover {
     transform: translateY(-5px);
-    border-color: var(--primary);
+    border-color: var(--accent);
+    box-shadow: 0 10px 30px rgba(255, 215, 0, 0.2);
 }
 
 .producto-card::before {
@@ -523,19 +605,21 @@ body::before {
     left: 0;
     width: 100%;
     height: 4px;
-    background: linear-gradient(90deg, var(--primary), var(--secondary));
+    background: linear-gradient(90deg, var(--accent), #ffaa00);
 }
 
 .producto-nombre {
     font-size: 1.2rem;
     font-weight: 700;
     margin-bottom: 8px;
+    color: var(--text);
 }
 
 .producto-descripcion {
     font-size: 0.9rem;
     color: var(--text-dim);
     margin-bottom: 15px;
+    line-height: 1.4;
 }
 
 .producto-footer {
@@ -547,29 +631,57 @@ body::before {
 .producto-precio {
     font-size: 1.5rem;
     font-weight: 900;
-    color: var(--primary);
+    color: var(--accent);
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
 }
 
 .btn-agregar {
     width: 40px;
     height: 40px;
-    background: linear-gradient(45deg, var(--primary), var(--secondary));
+    background: linear-gradient(45deg, var(--accent), #ffaa00);
     border: none;
     border-radius: 50%;
-    color: white;
+    color: #000;
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
     transition: 0.3s;
 }
 
 .btn-agregar:hover {
     transform: scale(1.1);
+    box-shadow: 0 0 20px var(--accent);
 }
 
+/* ===== VISTA PREVIA ===== */
+.vista-previa {
+    margin-top: 50px;
+    padding-top: 30px;
+    border-top: 2px solid rgba(0, 243, 255, 0.2);
+}
+
+.vista-previa h3 {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 25px;
+    font-size: 1.5rem;
+}
+
+.ver-todos {
+    text-align: center;
+    margin-top: 30px;
+}
+
+/* ===== BANNER VIP ===== */
 .gastro-vip-banner {
     margin-top: 50px;
     padding: 30px;
-    background: linear-gradient(45deg, rgba(255,215,0,0.1), rgba(255,0,195,0.1));
+    background: linear-gradient(45deg, rgba(255, 215, 0, 0.1), rgba(255, 0, 195, 0.1));
     border-radius: 20px;
+    border: 1px solid rgba(255, 215, 0, 0.3);
 }
 
 .vip-banner-content {
@@ -582,7 +694,18 @@ body::before {
 
 .vip-banner-content i {
     font-size: 3rem;
-    color: #ffd700;
+    color: var(--accent);
+    text-shadow: 0 0 20px var(--accent);
+}
+
+.vip-banner-content h3 {
+    font-size: 1.5rem;
+    margin-bottom: 5px;
+    color: var(--accent);
+}
+
+.vip-banner-content p {
+    color: var(--text-dim);
 }
 
 /* ===== OFERTAS ===== */
@@ -590,20 +713,34 @@ body::before {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 30px;
+    margin-top: 30px;
 }
 
 .oferta-card {
-    background: var(--card-bg);
-    border: 1px solid rgba(0,243,255,0.2);
+    background: rgba(20, 25, 35, 0.8);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(0, 243, 255, 0.2);
     border-radius: 15px;
     padding: 30px;
     text-align: center;
     position: relative;
+    transition: 0.3s;
+}
+
+.oferta-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--primary);
+    box-shadow: 0 0 30px var(--primary-glow);
 }
 
 .oferta-card.popular {
     border: 2px solid var(--primary);
     transform: scale(1.05);
+    box-shadow: 0 0 50px var(--primary-glow);
+}
+
+.oferta-card.torneo {
+    background: linear-gradient(45deg, rgba(0, 243, 255, 0.1), rgba(255, 0, 195, 0.1));
 }
 
 .oferta-tag {
@@ -615,6 +752,29 @@ body::before {
     padding: 5px 20px;
     border-radius: 50px;
     font-weight: 900;
+    font-size: 1.2rem;
+    box-shadow: 0 0 20px var(--secondary-glow);
+}
+
+.oferta-card h3 {
+    font-size: 1.8rem;
+    margin: 20px 0 10px;
+}
+
+.oferta-desc {
+    color: var(--text-dim);
+    margin-bottom: 20px;
+}
+
+.oferta-precio {
+    margin: 20px 0;
+}
+
+.precio-original {
+    font-size: 1.2rem;
+    color: var(--text-dim);
+    text-decoration: line-through;
+    margin-right: 15px;
 }
 
 .precio-oferta {
@@ -658,19 +818,23 @@ body::before {
 }
 
 .nivel-card {
-    background: rgba(20,25,35,0.8);
+    background: rgba(20, 25, 35, 0.8);
+    backdrop-filter: blur(10px);
     border-radius: 20px;
     padding: 25px;
-    border: 1px solid rgba(255,255,255,0.1);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     transition: 0.3s;
+    position: relative;
 }
 
 .nivel-card:hover {
     transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
 }
 
 .nivel-card.popular {
     border: 2px solid #ffd700;
+    box-shadow: 0 0 30px rgba(255, 215, 0, 0.3);
 }
 
 .nivel-header {
@@ -682,6 +846,11 @@ body::before {
 
 .nivel-icon {
     font-size: 2rem;
+}
+
+.nivel-header h4 {
+    font-size: 1.5rem;
+    margin: 0;
 }
 
 .nivel-horas {
@@ -706,6 +875,7 @@ body::before {
     display: flex;
     align-items: center;
     gap: 8px;
+    font-size: 0.9rem;
 }
 
 .nivel-beneficios li i {
@@ -721,7 +891,7 @@ body::before {
 .vip-simulador {
     margin: 50px 0;
     padding: 30px;
-    background: rgba(0,0,0,0.3);
+    background: rgba(0, 0, 0, 0.3);
     border-radius: 20px;
 }
 
@@ -785,7 +955,7 @@ body::before {
 .simulador-resultado {
     margin-top: 30px;
     padding: 20px;
-    background: rgba(255,255,255,0.05);
+    background: rgba(255, 255, 255, 0.05);
     border-radius: 10px;
     text-align: center;
 }
@@ -801,27 +971,11 @@ body::before {
 .nivel-obtenido.leyenda { color: #ffd700; }
 .nivel-obtenido.novato { color: #808080; }
 
-.beneficio-preview {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 15px;
-    justify-content: center;
-    margin-top: 15px;
-}
-
-.beneficio-tag {
-    padding: 5px 15px;
-    background: rgba(255,215,0,0.1);
-    border: 1px solid #ffd700;
-    border-radius: 50px;
-    font-size: 0.9rem;
-}
-
 /* REGISTRO VIP */
 .vip-registro {
     margin-top: 60px;
     padding: 40px;
-    background: linear-gradient(45deg, rgba(0,243,255,0.05), rgba(255,0,195,0.05));
+    background: linear-gradient(45deg, rgba(0, 243, 255, 0.05), rgba(255, 0, 195, 0.05));
     border-radius: 30px;
 }
 
@@ -849,7 +1003,7 @@ body::before {
 }
 
 .registro-form {
-    background: rgba(0,0,0,0.3);
+    background: rgba(0, 0, 0, 0.3);
     padding: 30px;
     border-radius: 20px;
 }
@@ -858,8 +1012,8 @@ body::before {
     width: 100%;
     padding: 12px 15px;
     margin-bottom: 15px;
-    background: rgba(255,255,255,0.05);
-    border: 1px solid rgba(0,243,255,0.3);
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(0, 243, 255, 0.3);
     border-radius: 8px;
     color: white;
 }
@@ -867,13 +1021,15 @@ body::before {
 .registro-form input:focus {
     outline: none;
     border-color: var(--primary);
+    box-shadow: 0 0 20px var(--primary-glow);
 }
 
 /* ===== FOOTER ===== */
 .footer {
-    background: rgba(5,6,7,0.95);
+    background: rgba(5, 6, 7, 0.95);
     padding: 60px 0 30px;
     border-top: 2px solid var(--primary);
+    margin-top: 50px;
 }
 
 .footer-grid {
@@ -894,6 +1050,30 @@ body::before {
     color: var(--primary);
 }
 
+.footer-col h4 {
+    margin-bottom: 20px;
+    color: var(--primary);
+}
+
+.footer-col ul {
+    list-style: none;
+}
+
+.footer-col ul li {
+    margin-bottom: 10px;
+}
+
+.footer-col ul li a {
+    color: var(--text-dim);
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.footer-col ul li a:hover {
+    color: var(--primary);
+    padding-left: 5px;
+}
+
 .social-links {
     display: flex;
     gap: 15px;
@@ -903,7 +1083,7 @@ body::before {
 .social-links a {
     width: 40px;
     height: 40px;
-    background: rgba(0,243,255,0.1);
+    background: rgba(0, 243, 255, 0.1);
     border: 1px solid var(--primary);
     border-radius: 50%;
     display: flex;
@@ -917,12 +1097,37 @@ body::before {
 .social-links a:hover {
     background: var(--primary);
     color: var(--bg-dark);
+    transform: translateY(-5px);
+    box-shadow: 0 0 30px var(--primary-glow);
 }
 
 .footer-bottom {
     text-align: center;
     padding-top: 30px;
-    border-top: 1px solid rgba(0,243,255,0.2);
+    border-top: 1px solid rgba(0, 243, 255, 0.2);
+    color: var(--text-dim);
+}
+
+/* ===== NO RESULTS ===== */
+.no-results {
+    text-align: center;
+    padding: 60px 20px;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 15px;
+}
+
+.no-results i {
+    font-size: 4rem;
+    color: var(--text-dim);
+    margin-bottom: 20px;
+}
+
+.no-results h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.no-results p {
     color: var(--text-dim);
 }
 
@@ -931,20 +1136,30 @@ body::before {
     .hero-container,
     .registro-container {
         grid-template-columns: 1fr;
+        gap: 40px;
+    }
+    
+    .hero-image {
+        height: 300px;
     }
 }
 
 @media (max-width: 768px) {
+    .header-container {
+        position: relative;
+    }
+    
     .nav-menu {
         display: none;
         position: absolute;
         top: 100%;
         left: 0;
         width: 100%;
-        background: rgba(5,6,7,0.98);
+        background: rgba(5, 6, 7, 0.98);
         padding: 20px;
         flex-direction: column;
         align-items: center;
+        border-bottom: 2px solid var(--primary);
     }
     
     .nav-menu.active {
@@ -959,16 +1174,59 @@ body::before {
         display: block;
     }
     
-    .gastro-tabs,
-    .platform-tabs {
+    .hero-container {
+        text-align: center;
+    }
+    
+    .hero-stats {
+        justify-content: center;
+    }
+    
+    .hero-buttons {
+        justify-content: center;
+    }
+    
+    .floating-card {
+        width: 100px;
+        height: 100px;
+        font-size: 2.5rem;
+    }
+    
+    .floating-card.card-2 {
+        top: 120px;
+        left: 80px;
+    }
+    
+    .floating-card.card-3 {
+        top: 200px;
+        left: 20px;
+    }
+    
+    .platform-tabs,
+    .gastro-tabs {
         flex-wrap: nowrap;
         overflow-x: auto;
         padding-bottom: 10px;
+        justify-content: flex-start;
+        -webkit-overflow-scrolling: touch;
     }
     
-    .gastro-tab,
-    .platform-tab {
+    .platform-tab,
+    .gastro-tab {
         flex-shrink: 0;
+    }
+    
+    .vip-banner-content {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .registro-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .niveles-grid {
+        grid-template-columns: 1fr;
     }
 }
 
@@ -981,8 +1239,35 @@ body::before {
         font-size: 2.5rem;
     }
     
+    .hero-buttons {
+        flex-direction: column;
+    }
+    
+    .btn-large {
+        width: 100%;
+        text-align: center;
+    }
+    
+    .floating-card {
+        width: 80px;
+        height: 80px;
+        font-size: 2rem;
+    }
+    
     .juegos-grid,
-    .gastro-grid {
+    .productos-grid {
         grid-template-columns: 1fr;
+    }
+    
+    .oferta-card.popular {
+        transform: scale(1);
+    }
+    
+    .input-group {
+        flex-direction: column;
+    }
+    
+    .horas-slider {
+        width: 100%;
     }
 }
